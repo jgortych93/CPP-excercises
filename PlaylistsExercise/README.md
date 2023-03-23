@@ -11,3 +11,9 @@ For example, the following code prints "true" as both songs point to each other.
     second->next(first);
 
     std::cout << std::boolalpha << first->isInRepeatingPlaylist();
+
+
+Additional conditions:
+If playlist repeats, last song is followed by first song.
+If playlist repeats, starting songs can be skipped.
+Performance test on a large playlist should be good.
