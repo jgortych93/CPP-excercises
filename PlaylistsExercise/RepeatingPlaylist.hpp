@@ -6,17 +6,33 @@
 class RepeatingPlaylist
 {
 public:
-    RepeatingPlaylist();
+    RepeatingPlaylist()
+        : root(nullptr)
+        , back(nullptr)
+    {}
     ~RepeatingPlaylist();
 
-    bool InsertSongOfName(const std::string& name) = default;
-    bool EreaseSongOfName(const std::string& name);
+    void PushBack(Song& song);
+    void PushFront(Song& song);
+    void PopBack();
+    void PopFront();
+
+    Song& GetFront() const;
+    Song& GetBack() const;
 
     void DeletePlaylist();
 
+    void PrintPlaylist();
+
 private:
-    Song* root;
-    Song* back;
+    struct Node {
+        Song* val;
+        Node* nextSong;
+        Node* prevSong;
+    };
+
+    Node* root;
+    Node* back;
 };
 
 #endif // !REPEATING_PLAYLIST_HPP
