@@ -2,29 +2,19 @@
 #define SONG_HPP
 
 #include <stdexcept>
-#include <iostream>
 
 class Song
 {
 public:
-    Song(std::string name) : name(name), nextSong(NULL) {}
+    Song(std::string name) : name(name) {}
 
-    void next(Song* song)
+    inline std::string GetName() const
     {
-        this->nextSong = song;
-    }
-
-    bool isInRepeatingPlaylist()
-    {
-        if (this->nextSong->nextSong == this)
-            return true;
-        else
-            return false;
+        return this->name;
     }
 
 private:
     const std::string name;
-    Song* nextSong;
 };
 
 #endif
