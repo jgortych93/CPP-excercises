@@ -13,8 +13,13 @@ public:
         return this->name;
     }
 
+    inline void SetName(std::string&& newName)
+    {
+        this->name = newName;
+    }
+
 private:
-    const std::string name;
+    std::string name;
 };
 
 #endif
