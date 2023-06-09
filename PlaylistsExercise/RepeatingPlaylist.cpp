@@ -7,7 +7,7 @@ RepeatingPlaylist::~RepeatingPlaylist()
 	this->DeletePlaylist();
 }
 
-void RepeatingPlaylist::PushBack(Song& song)
+void RepeatingPlaylist::PushBack(const Song& song)
 {
 	if (this->root == nullptr)
 	{
@@ -25,7 +25,7 @@ void RepeatingPlaylist::PushBack(Song& song)
 	}
 }
 
-void RepeatingPlaylist::PushFront(Song& song)
+void RepeatingPlaylist::PushFront(const Song& song)
 {
 	Node* newNode = new Node();
 	newNode->val = &song;
@@ -102,10 +102,10 @@ void RepeatingPlaylist::PopBack()
 
 Song& RepeatingPlaylist::GetFront() const
 {
-	return *(this->root->val);
+	return *(const_cast<Song*>(this->root->val));
 }
 
 Song& RepeatingPlaylist::GetBack() const
 {
-	return *(this->back->val);
+	return *(const_cast<Song*>(this->back->val));
 }

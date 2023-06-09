@@ -12,8 +12,8 @@ public:
     {}
     ~RepeatingPlaylist();
 
-    void PushBack(Song& song);
-    void PushFront(Song& song);
+    void PushBack(const Song & song);
+    void PushFront(const Song & song);
     void PopBack();
     void PopFront();
 
@@ -26,7 +26,7 @@ public:
 
 private:
     struct Node {
-        Song* val;
+        const Song* val;
         Node* nextSong;
         Node* prevSong;
     };
