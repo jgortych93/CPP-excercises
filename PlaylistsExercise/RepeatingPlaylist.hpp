@@ -20,6 +20,7 @@ public:
     Song& GetFront() const;
     Song& GetBack() const;
 
+    bool DeleteNodeAtPosition(uint32_t idx);
     void DeletePlaylist();
 
     void PrintPlaylist();
@@ -30,6 +31,8 @@ private:
         Node* nextSong;
         Node* prevSong;
     };
+
+    void DeleteNode(Node* node);
 
     Node* root;
     Node* back;

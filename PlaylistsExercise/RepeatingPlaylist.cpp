@@ -109,3 +109,52 @@ Song& RepeatingPlaylist::GetBack() const
 {
 	return *(const_cast<Song*>(this->back->val));
 }
+
+bool RepeatingPlaylist::DeleteNodeAtPosition(uint32_t idx)
+{
+	if (this->root == nullptr) return false;
+
+	Node* currentNode = this->root;
+
+	for (int i = 0; currentNode != nullptr && i <= idx; ++i)
+	{
+		currentNode = currentNode->nextSong;
+	}
+
+	if (currentNode != nullptr)
+	{
+		DeleteNode(currentNode);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void RepeatingPlaylist::DeleteNode(Node* node)
+{
+	Node* prevSong = node->prevSong;
+	Node* nextSong = node->nextSong;
+
+	delete node;
+
+	if (prevSong != nullptr)
+	{
+		prevSong->nextSong = nextSong;
+	}
+	else
+	{
+		this->root = nextSong;
+		return;
+	}
+
+	if (nextSong != nullptr)
+	{
+		nextSong->prevSong = prevSong;
+	}
+	else
+	{
+		this->back = prevSong;
+	}
+}
