@@ -57,6 +57,9 @@ void RepeatingPlaylist::DeletePlaylist()
 		delete currentNode;
 		currentNode = tmp;
 	}
+
+	this->root = nullptr;
+	this->back = nullptr;
 }
 
 void RepeatingPlaylist::PrintPlaylist()
@@ -81,6 +84,7 @@ void RepeatingPlaylist::PopFront()
 	if (secondSong == nullptr)
 	{
 		delete this->root;
+		this->root = nullptr;
 		return;
 	}
 
@@ -116,7 +120,7 @@ bool RepeatingPlaylist::DeleteNodeAtPosition(uint32_t idx)
 
 	Node* currentNode = this->root;
 
-	for (int i = 0; currentNode != nullptr && i <= idx; ++i)
+	for (int i = 1; currentNode != nullptr && i <= idx; ++i)
 	{
 		currentNode = currentNode->nextSong;
 	}
@@ -138,6 +142,7 @@ void RepeatingPlaylist::DeleteNode(Node* node)
 	Node* nextSong = node->nextSong;
 
 	delete node;
+	node = nullptr;
 
 	if (prevSong != nullptr)
 	{
