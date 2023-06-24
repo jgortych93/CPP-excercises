@@ -64,7 +64,11 @@ void RepeatingPlaylist::DeletePlaylist()
 
 void RepeatingPlaylist::PrintPlaylist()
 {
-	if (this->root == nullptr) return;
+	if (this->root == nullptr)
+	{
+		std::cout << "Playlist is empty." << "\n";
+		return;
+	}
 
 	Node* current = this->root;
 	do {
