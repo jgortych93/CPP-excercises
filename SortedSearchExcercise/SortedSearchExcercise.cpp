@@ -5,9 +5,8 @@
 
 int countNumbers(const std::vector<int>& sortedVector, int lessThan)
 {
-    return std::count_if(sortedVector.begin(), sortedVector.end(), [lessThan](int val) {
-            return val < lessThan;
-        });
+    auto lowerBound = std::lower_bound(sortedVector.begin(), sortedVector.end(), lessThan);
+    return std::distance(sortedVector.begin(), lowerBound);
 }
 
 #ifndef RunTests
